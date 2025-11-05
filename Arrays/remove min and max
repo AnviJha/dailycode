@@ -1,0 +1,36 @@
+2091. Removing Minimum and Maximum From Array
+class Solution {
+public:
+    int minimumDeletions(vector<int>& nums) {
+        int n=nums.size();
+        //find max and min value
+        int mini=0;
+        int maxi=0;
+        for(int i=0;i<n;i++){
+            if(nums[mini]>nums[i]){
+                mini=i;
+            }
+            if(nums[maxi]<nums[i]){
+                maxi=i;
+            }
+        }
+        int front=max(mini,maxi)+1; //remove both element from front
+        int back=n-min(mini,maxi);  //remove both element from last
+        int mid=n/2; //from middle
+        int t1,t2;
+        if(mini<mid){
+           t1=mini+1; 
+        }
+        else{
+            t1=n-mini;
+        }
+        if(maxi<mid){
+           t2=maxi+1; 
+        }
+        else{
+            t2=n-maxi;
+        }
+        int total=t1+t2;
+        return min({front,back,total});
+    }
+};
