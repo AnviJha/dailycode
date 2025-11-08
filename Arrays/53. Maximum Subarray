@@ -1,0 +1,24 @@
+Given an integer array nums, find the subarray with the largest sum, and return its sums
+
+Example 1:
+
+Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
+Output: 6
+Explanation: The subarray [4,-1,2,1] has the largest sum 6.
+sol:
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        //using kadanes algo
+        int cs=0,ms=INT_MIN; //cs=current sum ms=maximum sum
+      
+        for(int i=0;i<nums.size();i++){
+            cs=cs+nums[i];
+            ms=max(cs,ms);
+            if(cs<0){
+                cs=0;
+            }
+        }
+        return ms;
+    }
+};
