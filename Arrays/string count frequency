@@ -1,0 +1,34 @@
+Problem Statement: Given a string, calculate the frequency of characters in a string.
+
+Examples:
+
+Example 1:
+Input: takeuforward
+Output: a2 d1 e1 f1 k1 o1 r2 t1 u1 w1 
+Explanation: Count of every character of string is printed.
+soln:
+#include <iostream>
+using namespace std;
+
+void Printfrequency(string str)
+{
+  int freq[26] = {0};
+  for (int i = 0; i < str.length(); i++)
+  {
+    freq[str[i] - 'a']++;
+  }
+  for (int i = 0; i < 26; i++)
+  {
+    if (freq[i] != 0)
+    {
+      cout << (char)(i + 'a') << freq[i] << " ";
+    }
+  }
+}
+
+int main()
+{
+  string str = "takeuforward";
+  Printfrequency(str);
+  return 0;
+}
